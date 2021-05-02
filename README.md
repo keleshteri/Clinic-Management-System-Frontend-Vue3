@@ -1,2 +1,4 @@
-# Clinic-Management-System-Frontend-Vue3
-Clinic Management System Frontend Vue3
+# Clinic Management System
+## Addiction Treatment Clinic
+### Spring-based application
+### api backend for app
