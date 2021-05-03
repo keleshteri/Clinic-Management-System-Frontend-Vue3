@@ -35,6 +35,7 @@
                         <InputText id="zip" type="text" />
                     </div>
                 </div>
+                <button type="submit" :disabled="isSubmitting">Submit</button>
             </form>
         </div>
     </div>
@@ -43,16 +44,21 @@
 <script>
 import { ref } from 'vue'
 import InputText from 'primevue/inputtext'
-import { useForm } from 'vee-validate'
+import { useForm } from 'vee-validate';
+// import { Form, Field } from 'vee-validate';
+// import * as Yup from 'yup';
 export default {
     name: 'create',
     components: { InputText },
     setup() {
-        const { handleSubmit } = useForm()
+        const { handleSubmit, isSubmitting } = useForm()
 
-        const onSubmit = handleSubmit((values) => {
-            alert(JSON.stringify(values, null, 2))
-        })
+        // const onSubmit = handleSubmit((values) => {
+        //     alert(JSON.stringify(values, null, 2))
+        // })
+        const onSubmit = handleSubmit(() => {
+            alert('jjj')
+    });
 
         //
         const requestOptions = {
@@ -92,6 +98,7 @@ export default {
 
         return {
             onSubmit,
+      isSubmitting,
             selectedState,
             states,
             cities1,
