@@ -44,22 +44,14 @@
 <script>
 import { ref } from 'vue'
 import InputText from 'primevue/inputtext'
-import { useForm } from 'vee-validate';
 // import { Form, Field } from 'vee-validate';
 // import * as Yup from 'yup';
 export default {
     name: 'create',
     components: { InputText },
     setup() {
-        const { handleSubmit, isSubmitting } = useForm()
-
-        // const onSubmit = handleSubmit((values) => {
-        //     alert(JSON.stringify(values, null, 2))
-        // })
-        const onSubmit = handleSubmit(() => {
-            alert('jjj')
-    });
-
+        
+ 
         //
         const requestOptions = {
             method: 'POST',
@@ -97,8 +89,7 @@ export default {
         const city2 = ref(null)
 
         return {
-            onSubmit,
-      isSubmitting,
+ 
             selectedState,
             states,
             cities1,
