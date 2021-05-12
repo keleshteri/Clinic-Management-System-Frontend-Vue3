@@ -18,18 +18,27 @@ const routes = [
     },
     {
         path: '/patients',
-        name: 'Patients',
-        component: () => import('../views/patients/PatientList.vue'),
-    },
-    {
-        path: '/patients/create',
-        name: 'PatientCreate',
-        component: () => import('../views/patients/PatientCreate.vue'),
-    },
-    {
-        path: '/patients/edit/:id',
-        name: 'PatientEdit',
-        component: () => import('../views/patients/PatientEdit.vue'),
+        component: () => import('../views/Patients.vue'),
+        children: [
+            {
+                path: '',
+                component: import(
+                    '../components/patients/list/PatientsList.vue'
+                ),
+            },
+            {
+                path: 'create',
+                component: import(
+                    '../components/patients/create/PatientCreate.vue'
+                ),
+            },
+            {
+                path: '/edit/:id',
+                name: 'PatientEdit',
+                component: () =>
+                    import('../components/patients/edit/PatientEdit.vue'),
+            },
+        ],
     },
 ]
 
