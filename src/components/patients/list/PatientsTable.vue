@@ -60,6 +60,11 @@
                     @click="editPatient(slotProps.data)"
                 />
                 <Button
+                    icon="pi pi-id-card"
+                    class="p-button-rounded p-button-info"
+                    @click="idCardPatient(slotProps.data)"
+                />
+                <Button
                     icon="pi pi-trash"
                     class="p-button-rounded p-button-warning"
                     @click="deletePatient(slotProps.data)"
@@ -97,6 +102,10 @@ export default {
         deletePatient(patient) {
             console.log('deletePatient')
             this.$emit('delete:patient', patient)
+        },
+        idCardPatient(patient) {
+            console.log('idCardPatient')
+            this.$emit('idCard:patient', patient)
         },
     },
     watch: {

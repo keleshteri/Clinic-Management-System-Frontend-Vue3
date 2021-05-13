@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Patients from '../views/Patients.vue'
+import PatientsList from '../components/patients/list/PatientsList.vue'
+import PatientEdit from '../components/patients/edit/PatientEdit.vue'
+import PatientCreate from '../components/patients/create/PatientCreate.vue'
+import PatientUploads from '../components/patients/uploads/PatientUploads.vue'
 
 const routes = [
     {
@@ -18,25 +23,26 @@ const routes = [
     },
     {
         path: '/patients',
-        component: () => import('../views/Patients.vue'),
+        component: Patients,
         children: [
             {
                 path: '',
-                component: import(
-                    '../components/patients/list/PatientsList.vue'
-                ),
+                component: PatientsList,
             },
             {
-                path: 'create',
-                component: import(
-                    '../components/patients/create/PatientCreate.vue'
-                ),
+                path: 'new',
+                name: 'PatientNew',
+                component: PatientCreate,
             },
             {
-                path: '/edit/:id',
-                name: 'PatientEdit',
-                component: () =>
-                    import('../components/patients/edit/PatientEdit.vue'),
+                path: 'update/:id',
+                name: 'PatientUpdate',
+                component: PatientEdit,
+            },
+            {
+                path: 'uploads/image/:id',
+                name: 'PatientUploads',
+                component: PatientUploads,
             },
         ],
     },

@@ -63,7 +63,7 @@ export default {
                         {
                             label: 'New Patient',
                             icon: 'pi pi-fw pi-plus',
-                            to: '/patients/create',
+                            to: '/patients/new',
                         },
                     ],
                 },

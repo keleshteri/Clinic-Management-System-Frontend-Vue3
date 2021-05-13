@@ -8,14 +8,12 @@
                 <div v-else>
                     <div>
                         <div class="card">
-                            <h5 class="p-text-center">Register</h5>
-
-                            pat:
-                            {{ patient }}
+                            <h5 class="p-text-center">Update</h5>
                             <PatientForm
                                 :patient="patient"
                                 :fields="fields"
                                 :rows="rows"
+                                :edit="true"
                             ></PatientForm>
                         </div>
                     </div>

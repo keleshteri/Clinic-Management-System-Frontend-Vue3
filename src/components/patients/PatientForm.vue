@@ -88,6 +88,7 @@
                     :id="col.field"
                     v-model="v$[col.field].$model"
                     :showIcon="true"
+                    dateFormat="yy-mm-dd"
                     :class="{
                         'p-invalid': v$[col.field].$invalid && submitted,
                     }"
@@ -119,6 +120,7 @@ export default {
         patient: { type: Object, required: true },
         fields: { type: Object, required: true },
         rows: { type: Array, required: true },
+        edit: { type: Boolean, default: false },
     },
     computed: {
         fieldRows() {
@@ -161,8 +163,6 @@ export default {
 
         const v$ = useVuelidate(rules, state)
 
-        console.log('v$', v$)
-
         const handleSubmit = (isFormValid) => {
             submitted.value = true
 
@@ -172,17 +172,19 @@ export default {
             savePatient()
         }
 
-        console.log(state)
-
+        console.log('patient', props.patient)
         const savePatient = async () => {
             const requestOptions = {
-                method: 'POST',
+                method: props.edit ? 'PUT' : 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(state),
             }
+            const url = props.edit
+                ? '/api/v1/patient/' + state.id
+                : '/api/v1/patient/'
 
             try {
-                let res = await fetch('/api/v1/patient/', requestOptions)
+                let res = await fetch(url, requestOptions)
                 const json = await res.json()
                 if (!res.ok) {
                     console.log('error: ', json.message)

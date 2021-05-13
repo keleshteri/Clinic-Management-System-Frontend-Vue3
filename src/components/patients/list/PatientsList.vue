@@ -12,6 +12,7 @@
                     @update:patientSelectedRows="updateSelectedPatients"
                     @update:patient="editPatient"
                     @delete:patient="deletePatient"
+                    @idCard:patient="idCardPatient"
                 />
             </div>
         </div>
@@ -50,12 +51,19 @@ export default {
         editPatient(patient) {
             console.log('button edit click: ', { ...patient })
             this.$router.push({
-                name: 'PatientEdit',
+                name: 'PatientUpdate',
                 params: { id: patient.id },
             })
         },
         deletePatient(patient) {
             console.log('button delete click: ', { ...patient })
+        },
+        idCardPatient(patient) {
+            console.log('button idCardPatient click: ', { ...patient })
+            this.$router.push({
+                name: 'PatientUploads',
+                params: { id: patient.id },
+            })
         },
     },
 
