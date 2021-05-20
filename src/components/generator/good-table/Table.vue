@@ -376,6 +376,7 @@ export default {
   ],
   props: {
     fields: { type: Object, required: true },
+    columnList: { type: Array, required: true },
     isLoading: { default: null, type: Boolean },
     maxHeight: { default: null, type: String },
     fixedHeader: Boolean,
@@ -578,7 +579,10 @@ export default {
 
   computed: {
     columns() {
-        return Object.values(this.fields);
+       const filtered = this.columnList
+            .reduce((obj, key) => ({ ...obj, [key]: this.fields[key] }), {});
+        // return Object.values(this.fields);
+        return Object.values(filtered);
       },
     tableStyles () {
       if (this.compactMode)
