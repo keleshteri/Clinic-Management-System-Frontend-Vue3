@@ -581,6 +581,7 @@ export default {
     columns() {
       //  const filtered = this.columnList
             // .reduce((obj, key) => ({ ...obj, [key]: this.fields[key] }), {});
+ 
         return Object.values(this.fields);
         // return Object.values(filtered);
       },
