@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import Patients from '../views/Patients.vue'
 import PatientsList from '../components/patients/PatientsList.vue'
 // import PatientEdit from '../components/patients/edit/PatientEdit.vue'
-// import PatientCreate from '../components/patients/create/PatientCreate.vue'
+import PatientCreate from '../components/patients/PatientCreate.vue'
 // import PatientUploads from '../components/patients/uploads/PatientUploads.vue'
 
 const routes = [
@@ -31,11 +31,11 @@ const routes = [
                 path: '',
                 component: PatientsList,
             },
-    //         {
-    //             path: 'new',
-    //             name: 'PatientNew',
-    //             component: PatientCreate,
-    //         },
+            {
+                path: 'new',
+                name: 'PatientNew',
+                component: PatientCreate,
+            },
     //         {
     //             path: 'update/:id',
     //             name: 'PatientUpdate',
