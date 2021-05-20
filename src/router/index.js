@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Patients from '../views/Patients.vue'
 import PatientsList from '../components/patients/PatientsList.vue'
-// import PatientEdit from '../components/patients/edit/PatientEdit.vue'
 import PatientCreate from '../components/patients/PatientCreate.vue'
+import PatientEdit from '../components/patients/PatientEdit.vue'
+
 // import PatientUploads from '../components/patients/uploads/PatientUploads.vue'
 
 const routes = [
@@ -36,11 +37,11 @@ const routes = [
                 name: 'PatientNew',
                 component: PatientCreate,
             },
-    //         {
-    //             path: 'update/:id',
-    //             name: 'PatientUpdate',
-    //             component: PatientEdit,
-    //         },
+            {
+                path: 'update/:id',
+                name: 'PatientUpdate',
+                component: PatientEdit,
+            },
     //         {
     //             path: 'uploads/image/:id',
     //             name: 'PatientUploads',
