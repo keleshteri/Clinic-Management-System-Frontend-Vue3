@@ -44,6 +44,7 @@
           :search-enabled="searchEnabled && externalSearchQuery == null"
           :global-search-placeholder="searchPlaceholder"
       >
+      
         <template v-slot:internal-table-actions v-if="hasTableActionsSlot">
           <slot name="table-actions"></slot>
         </template>

@@ -11,9 +11,18 @@
                     :rows="patients"
                     max-height="300px"
                 >
-                <div slot="table-actions">
-                    jjjj
-                </div>
+                <template v-slot:table-actions>
+                   <h1>table-actions</h1>
+                     <button
+                class="px-3 py-1 bg-indigo-600 text-white rounded-md text-sm hover:bg-indigo-500 focus:outline-none"
+              >
+                New
+              </button>
+                </template>
+                <template v-slot:table-actions-bottom>
+                  <h1>table-actions-bottom</h1>
+                </template>
+            
                 </AsyncPatientsTable>
             </div>
         </div>
