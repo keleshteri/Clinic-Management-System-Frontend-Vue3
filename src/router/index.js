@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-// import Patients from '../views/Patients.vue'
-// import PatientsList from '../components/patients/list/PatientsList.vue'
+import Patients from '../views/Patients.vue'
+import PatientsList from '../components/patients/PatientsList.vue'
 // import PatientEdit from '../components/patients/edit/PatientEdit.vue'
 // import PatientCreate from '../components/patients/create/PatientCreate.vue'
 // import PatientUploads from '../components/patients/uploads/PatientUploads.vue'
@@ -11,6 +11,7 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
+        //meta: { layout: "empty" },
     },
     // {
     //     path: '/about',
@@ -21,14 +22,15 @@ const routes = [
     //     component: () =>
     //         import(/* webpackChunkName: "about" */ '../views/About.vue'),
     // },
-    // {
-    //     path: '/patients',
-    //     component: Patients,
-    //     children: [
-    //         {
-    //             path: '',
-    //             component: PatientsList,
-    //         },
+    {
+        path: '/patients',
+        component: Patients,
+        name: 'Patients',
+        children: [
+            {
+                path: '',
+                component: PatientsList,
+            },
     //         {
     //             path: 'new',
     //             name: 'PatientNew',
@@ -44,8 +46,8 @@ const routes = [
     //             name: 'PatientUploads',
     //             component: PatientUploads,
     //         },
-    //     ],
-    // },
+        ],
+    },
 ]
 
 const router = createRouter({
