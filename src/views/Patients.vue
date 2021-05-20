@@ -3,7 +3,6 @@
         <template #default>
             <router-view
                 v-slot="{ Component, route }"
-                :rows="rows"
                 :schema="schema"
             >
                 <component
@@ -39,6 +38,7 @@ export default {
                          disabled: true,
                          class: '',
                          style: 'color:red',
+                         hidden: false,
                         },
                     fileNumber: {
                          label: 'fileNumber',
@@ -52,6 +52,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                     nationalId: {
                          label: 'national Id',
@@ -65,6 +66,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      gender: {
                          label: 'Gender',
@@ -82,6 +84,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      birthDate: {
                          label: 'birthDate',
@@ -95,6 +98,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      firstName: {
                          label: 'First Name',
@@ -108,6 +112,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      middleName: {
                          label: 'Middle Name',
@@ -121,6 +126,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      lastName: {
                          label: 'Last Name',
@@ -134,6 +140,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      email: {
                          label: 'Email',
@@ -147,6 +154,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      cellphoneNumber: {
                          label: 'cellphoneNumber',
@@ -160,6 +168,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      landlineNumberHome: {
                          label: 'landlineNumberHome',
@@ -173,6 +182,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      landlineNumberOffice: {
                          label: 'landlineNumberOffice',
@@ -186,6 +196,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      homeAddress: {
                          label: 'homeAddress',
@@ -199,6 +210,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: false,
                      },
                      createdAt: {
                          label: 'createdAt',
@@ -208,6 +220,7 @@ export default {
                          sortable: true,
                          class: '',
                          style: '',
+                         hidden: true,
                      },
                      updatedAt: {
                          label: 'updatedAt',
@@ -221,9 +234,9 @@ export default {
                          type: 'DateTime',
                          class: '',
                          style: '',
+                         hidden: true,
                      },
                 },
-                columns:['id','name'],
             }
         }
                 

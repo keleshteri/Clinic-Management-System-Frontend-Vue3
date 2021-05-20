@@ -7,11 +7,14 @@
                 </div>
                 <AsyncPatientsTable
                     v-else
-                    :columnList="schema.columns"
                     :fields ="schema.fields"
                     :rows="patients"
                     max-height="300px"
-                />
+                >
+                <div slot="table-actions">
+                    jjjj
+                </div>
+                </AsyncPatientsTable>
             </div>
         </div>
     </div>
