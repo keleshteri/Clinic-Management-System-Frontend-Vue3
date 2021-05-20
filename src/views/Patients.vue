@@ -223,7 +223,7 @@ export default {
                          style: '',
                      },
                 },
-                columns:[['id']],
+                columns:['id','name'],
             }
         }
                 
