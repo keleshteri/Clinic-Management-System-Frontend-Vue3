@@ -62,20 +62,20 @@ export default{
             overlayMenuActive: false,
             mobileMenuActive: false,
             menu: [
-                { label: 'Dashboard', icon: 'tachometer-alt', to: '/' },
+                { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' },
                 {
-                    label: 'Users',
-                    icon: 'user-cog',
+                    label: 'Patients',
+                    icon: 'pi pi-fw pi-users',
                     items: [
                         {
-                            label: 'Users',
-                            icon: 'users',
-                            to: '/users',
+                            label: 'Patient List',
+                            icon: 'pi pi-fw pi-id-card',
+                            to: '/patients',
                         },
                         {
-                            label: 'Roles List',
-                            icon: 'user-lock',
-                            to: '/roles',
+                            label: 'New Patient',
+                            icon: 'pi pi-fw pi-plus',
+                            to: '/patients/new',
                         },
                     ],
                 },
@@ -206,5 +206,7 @@ export default{
 @import 'primevue/resources/themes/saga-blue/theme.css';
 @import 'primevue/resources/primevue.min.css';
 @import 'primeicons/primeicons.css';
+@import '../assets/layout/layout.scss';
+@import '../assets/layout/flags/flags.css';
 @import '../sass/App.scss';
 </style>

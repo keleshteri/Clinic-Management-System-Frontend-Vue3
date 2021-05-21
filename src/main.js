@@ -1,6 +1,5 @@
 /**Core */
 import { createApp,reactive } from 'vue'
-
 //router & store
 import router from "./router";
 import store from "./store";
@@ -12,12 +11,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(fas);
- 
-//
-import DashboardLayout from './layouts/AdminLayout.vue';
-import EmptyLayout from './layouts/EmptyLayout.vue';
-
-//
 /** PrimeVue */
 import PrimeVue from 'primevue/config';
 import AutoComplete from 'primevue/autocomplete';
@@ -102,7 +95,6 @@ import ToggleButton from 'primevue/togglebutton';
 import Tree from 'primevue/tree';
 import TreeTable from 'primevue/treetable';
 import TriStateCheckbox from 'primevue/tristatecheckbox';
-
 import CodeHighlight from './AppCodeHighlight';
 
 /**fix scrollTo */
@@ -115,13 +107,7 @@ router.beforeEach(function(to, from, next) {
 const app = createApp(App);
  //config
  app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined' });
-
-//
-
-app.component('default-layout', DashboardLayout);
-app.component('empty-layout', EmptyLayout);
-//
-app.component("fa-icon", FontAwesomeIcon)
+// app.component("fa-icon", FontAwesomeIcon)
 //store
 app.use(store);
 //router

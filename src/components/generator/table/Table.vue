@@ -1,113 +1,137 @@
 <template>
-    <div class="mt-8">
-      <h4 class="text-gray-600">Wide Table</h4>
+    <DataTable
+        ref="dt"
+        :value="data"
+        v-model:selection="selectedRows"
+        dataKey="id"
+        :paginator="true"
+        :rows="10"
+        :filters="filters"
+        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+        :rowsPerPageOptions="[5, 10, 25]"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} data"
+        responsiveLayout="scroll"
+    >
+        <template #header>
+            <div
+                class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between"
+            >
+                <h5 class="p-m-0">{{ title }}</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search" />
+                    <InputText
+                        v-model="filters['global']"
+                        placeholder="Search..."
+                    />
+                </span>
+            </div>
+        </template>
 
-      <div class="flex flex-col mt-6">
-        <div
-          class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
-        >
-          <div
-            class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
-          >
-            <table class="min-w-full">
-              <thead>
-                <tr>
-                  <th
-                    class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Name
-                  </th>
-                  <th
-                    class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Title
-                  </th>
-                  <th
-                    class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Status
-                  </th>
-                  <th
-                    class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Role
-                  </th>
-                  <th
-                    class="px-6 py-3 border-b border-gray-200 bg-gray-100"
-                  ></th>
-                </tr>
-              </thead>
-
-              <tbody class="bg-white">
-                <tr v-for="(u, index) in wideTableData" :key="index">
-                  <td
-                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
-                  >
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 h-10 w-10">
-                        <img
-                          class="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt
-                        />
-                      </div>
-
-                      <div class="ml-4">
-                        <div
-                          class="text-sm leading-5 font-medium text-gray-900"
-                        >
-                          {{ u.name }}
-                        </div>
-                        <div class="text-sm leading-5 text-gray-500">
-                          {{ u.email }}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td
-                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
-                  >
-                    <div class="text-sm leading-5 text-gray-900">
-                      {{ u.title }}
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      {{ u.title2 }}
-                    </div>
-                  </td>
-
-                  <td
-                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
-                  >
-                    <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                      >{{ u.status }}</span
-                    >
-                  </td>
-
-                  <td
-                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-                  >
-                    {{ u.role }}
-                  </td>
-
-                  <td
-                    class="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-                  >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+        <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
+        <Column
+            v-for="col of fields"
+            :field="col.field"
+            :header="col.label"
+            :sortable="col.sortable"
+            :key="col.field"
+        >   
+            <template #body="slotProps" v-if="col.type === 'Image'">
+                <span class="p-column-title">{{ col.label }}</span>
+                <img
+                    :src="slotProps.data[col.field]"
+                    :alt="slotProps.data[col.field]"
+                    class="avatar"
+                />
+            </template>
+            <template #body="slotProps" v-else-if="col.type === 'Link'">
+                <span class="p-column-title">{{ col.type }}</span>
+                <template></template>
+                <Button
+                :label="col.label"
+                :class="col.class"
+                @click="$router.push(`${col.link}${slotProps.data[col.field]}`)"
+                />
+            </template>
+            <template #body="slotProps" v-else>
+                <span class="p-column-title">{{ col.label }}</span>
+                <template></template>
+                {{ slotProps.data[col.field] }}
+            </template>
+        </Column>
+        <Column>
+            <template #body="slotProps">
+                <Button
+                    v-show="fields.id.showBtn.show"
+                    icon="pi pi-eye"
+                    class="p-button-rounded p-button-success p-mr-2"
+                    @click="showTable(slotProps.data)"
+                />
+                <Button
+                    v-show="fields.id.showBtn.edit"
+                    icon="pi pi-pencil"
+                    class="p-button-rounded p-button-warning p-mr-2"
+                    @click="editTable(slotProps.data)"
+                />
+                <Button
+                    v-show="fields.id.showBtn.Delete"
+                    icon="pi pi-trash"
+                    class="p-button-rounded p-button-danger"
+                    @click="deleteTable(slotProps.data)"
+                />
+            </template>
+        </Column>
+    </DataTable>
 </template>
+
 <script>
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
+// import ColumnGroup from 'primevue/columngroup' //optional for column grouping
+import Button from 'primevue/button'
 export default {
-  name:'Table'
+    name: 'Table',
+    // emits: ['update:dataelectedRows'],
+    components: { DataTable, Column, Button },
+    props: {
+        data: Array,
+        fields: Object,
+        title: String
+    },
+    data() {
+        return {
+            selectedRows: null,
+            filters: {},
+        }
+    },
+    methods: {
+        showTable(data) {
+            console.log('showdata')
+            this.$emit('show:data', data)
+        },
+        editTable(data) {
+            console.log('editdata')
+            this.$emit('update:data', data)
+        },
+        deleteTable(data) {
+            console.log('deletedata')
+            this.$emit('delete:data', data)
+        },
+    },
+    watch: {
+        selectedRows(newSelectedRows) {
+            if (newSelectedRows) {
+                console.log('i am here')
+                console.log('SelectedRowsData' + { ...newSelectedRows })
+                this.$emit('update:dataSelectedRows', newSelectedRows)
+            }
+        },
+    },
 }
 </script>
+
+<style>
+.avatar {
+    height: 60px;
+    width: 60px;
+}
+</style>

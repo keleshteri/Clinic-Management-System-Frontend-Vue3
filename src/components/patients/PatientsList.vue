@@ -8,7 +8,7 @@
                 <AsyncPatientsTable
                     v-else
                     :fields ="schema.fields"
-                    :rows="patients"
+                    :data="patients"
                     max-height="300px"
                 >
                 <template v-slot:table-actions>
