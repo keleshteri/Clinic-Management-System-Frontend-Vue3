@@ -62,19 +62,19 @@ export default{
             overlayMenuActive: false,
             mobileMenuActive: false,
             menu: [
-                { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' },
+                { label: 'Dashboard', icon: 'home', to: '/' },
                 {
                     label: 'Patients',
-                    icon: 'pi pi-fw pi-users',
+                    icon: 'users',
                     items: [
                         {
                             label: 'Patient List',
-                            icon: 'pi pi-fw pi-id-card',
+                            icon: 'id-card',
                             to: '/patients',
                         },
                         {
                             label: 'New Patient',
-                            icon: 'pi pi-fw pi-plus',
+                            icon: 'plus',
                             to: '/patients/new',
                         },
                     ],
