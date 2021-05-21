@@ -4,7 +4,11 @@ import Patients from '../views/Patients.vue'
 import PatientsList from '../components/patients/PatientsList.vue'
 import PatientCreate from '../components/patients/PatientCreate.vue'
 import PatientEdit from '../components/patients/PatientEdit.vue'
-
+//Medicines
+import Medicines from '../views/Medicines.vue'
+import MedicineList from '../components/medicines/MedicineList.vue'
+import MedicineCreate from '../components/medicines/MedicineCreate.vue'
+import MedicineEdit from '../components/medicines/MedicineEdit.vue'
 // import PatientUploads from '../components/patients/uploads/PatientUploads.vue'
 
 const routes = [
@@ -14,15 +18,6 @@ const routes = [
         component: Home,
         //meta: { layout: "empty" },
     },
-    // {
-    //     path: '/about',
-    //     name: 'About',
-    //     // route level code-splitting
-    //     // this generates a separate chunk (about.[hash].js) for this route
-    //     // which is lazy-loaded when the route is visited.
-    //     component: () =>
-    //         import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    // },
     {
         path: '/patients',
         component: Patients,
@@ -48,6 +43,28 @@ const routes = [
     //             component: PatientUploads,
     //         },
         ],
+    },
+    {
+        path: '/medicines',
+        name: 'Medicines',
+        component:Medicines,
+        children:[
+            {
+                path:'',
+                component:MedicineList,
+            },
+            {
+                path: 'new',
+                name: 'MedicineNew',
+                component: MedicineCreate,
+            },
+            {
+                path: 'update/:id',
+                name: 'MedicineUpdate',
+                component: MedicineEdit,
+            },
+        ]
+
     },
 ]
 
