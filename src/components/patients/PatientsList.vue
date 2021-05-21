@@ -30,13 +30,12 @@
 </template>
 <script>
 // import Table from '../../components/generator/table/Table.vue'
-// import Table from '../../components/generator/good-table/Table.vue'
 import { defineAsyncComponent } from 'vue'
 import Loading from '../../components/Loading.vue'
 import usePatients from '../../composables/patient/getPatients'
 
 const AsyncPatientsTable = defineAsyncComponent({
-    loader: () => import('../../components/generator/good-table/Table.vue'),
+    loader: () => import('../../components/generator/table/Table.vue'),
     loadingComponent: Loading,
     // errorComponent: ErrorComponent,
     timeout: 3000,
