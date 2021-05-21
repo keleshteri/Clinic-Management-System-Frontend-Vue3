@@ -10,6 +10,10 @@
                     :fields ="schema.fields"
                     title="Patients"
                     :data="patients"
+                    @show:data="showData"
+                    @update:dataSelectedRows="updateSelectedData"
+                    @update:data="editTable"
+                    @delete:data="deleteTable"
                      
                 >
                 <template v-slot:table-actions>
@@ -50,6 +54,32 @@ export default {
     components:{AsyncPatientsTable},
     data(){return{     
     }},
+    methods:{
+        updateSelectedData(rows) {
+            console.log('rows: ', { ...rows })
+        },
+        showData (data) {
+            this.$emit('show:data', data);
+        },
+        editTable(patient) {
+            console.log('button edit click: ', { ...patient })
+            this.$router.push({
+                name: 'PatientUpdate',
+                params: { id: patient.id },
+            })
+        },
+        deleteTable(data) {
+            alert('Patient Can not Be deleted')
+        },
+        idCardPatient(patient) {
+            console.log('button idCardPatient click: ', { ...patient })
+            this.$router.push({
+                name: 'PatientUploads',
+                params: { id: patient.id },
+            })
+        },
+
+    },
      async setup() {
         const { patients, error, load } = usePatients()
 
