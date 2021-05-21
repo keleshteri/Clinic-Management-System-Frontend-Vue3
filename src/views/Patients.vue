@@ -79,6 +79,8 @@ export default {
                              { label: 'male', code: 1, name: 'MALE' },
                              { label: 'female', code: 2, name: 'FEMALE' },
                          ],
+                         optionsValue:'name',
+                         optionsLabel:'name',
                          type: 'String',
                          rules: { required },
                          sortable: true,
@@ -237,6 +239,17 @@ export default {
                          hidden: true,
                      },
                 },
+                rows: [
+                        ['fileNumber', 'nationalId', 'gender', 'birthDate'],
+                        ['firstName', 'middleName', 'lastName'],
+                        [
+                            'cellphoneNumber',
+                            'landlineNumberHome',
+                            'landlineNumberOffice',
+                            'email',
+                        ],
+                        ['homeAddress'],
+                      ],
             }
         }
                 

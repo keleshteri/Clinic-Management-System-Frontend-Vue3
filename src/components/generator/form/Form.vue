@@ -33,7 +33,7 @@
                     :class="{
                         'p-error': v$[col.field].$invalid && submitted,
                     }"
-                    >{{ col.header }}*</label
+                    >{{ col.label }}*</label
                 >
                 <InputText
                     :id="col.field"
@@ -160,11 +160,12 @@ export default {
         const save = async () => {
             const requestOptions = {
                 method: props.edit ? 'PUT' : 'POST',
-                // headers: { 'Content-Type': 'application/json' },
-                data: state,//JSON.stringify(state),
+                // headers: { 'Content-Type': 'application/json' } 
+                data: state,
                 url: props.url
             }
-             
+
+            console.log(JSON.stringify(state));
 
             try {
                 // let res = await fetch(props.url, requestOptions)
