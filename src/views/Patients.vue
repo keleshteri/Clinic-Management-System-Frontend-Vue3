@@ -39,6 +39,11 @@ export default {
                          class: '',
                          style: 'color:red',
                          hidden: false,
+                         showBtn:{
+                                    show:true,
+                                    edit:true,
+                                    Delete: true
+                                }
                         },
                     fileNumber: {
                          label: 'fileNumber',

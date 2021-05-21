@@ -8,8 +8,9 @@
                 <AsyncPatientsTable
                     v-else
                     :fields ="schema.fields"
+                    title="Patients"
                     :data="patients"
-                    max-height="300px"
+                     
                 >
                 <template v-slot:table-actions>
                    <h1>table-actions</h1>
@@ -48,20 +49,6 @@ export default {
     props:['schema'],
     components:{AsyncPatientsTable},
     data(){return{     
-        rows:[
-               {
-                 id:1,
-                 name:"John",
-                //  age:20
-               },
-                {
-                 id:2,
-                 name:"ffff",
-                //  age:50
-               },
- 
-            ],
-
     }},
      async setup() {
         const { patients, error, load } = usePatients()
