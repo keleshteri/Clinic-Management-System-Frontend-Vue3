@@ -51,6 +51,7 @@ const routes = [
         children:[
             {
                 path:'',
+                name: 'MedicineList',
                 component:MedicineList,
             },
             {

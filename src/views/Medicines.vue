@@ -15,12 +15,17 @@
     </Suspense>
 </template>
 <script>
-// import { required, email } from '@vuelidate/validators'
+import { required } from '@vuelidate/validators'
 export default {
     name:'Patients',
     data() {
         return {
             schema: {
+                rows: [
+                    ['code', 'name'],
+                    ['description']
+
+                ],
                 fields:{
                      id: {
                          label: "ID",
@@ -38,13 +43,54 @@ export default {
                          style: 'color:red',
                          hidden: false,
                          showBtn:{
-                                    show:true,
+                                    show:false,
                                     edit:true,
                                     Delete: true
                                 }
                         },
-                },
-                rows: [ ],
+                     code: {
+                         label: 'Code',
+                         field: 'code',
+                         type: 'String',
+                         fieldSize: 1,
+                         fieldType: 'text',
+                         editable: true,
+                         creatable: true,
+                         rules: { required },
+                         sortable: true,
+                         class: '',
+                         style: '',
+                         hidden: false,
+                     },
+                     name: {
+                         label: 'Name',
+                         field: 'name',
+                         type: 'String',
+                         fieldSize: 1,
+                         fieldType: 'text',
+                         editable: true,
+                         creatable: true,
+                         rules: { required },
+                         sortable: true,
+                         class: '',
+                         style: '',
+                         hidden: false,
+                     },
+                     description: {
+                         label: 'Description',
+                         field: 'description',
+                         type: 'String',
+                         fieldSize: 1,
+                         fieldType: 'textarea',
+                         editable: true,
+                         creatable: true,
+                         rules: { required },
+                         sortable: true,
+                         class: '',
+                         style: '',
+                         hidden: false,
+                     },
+                }
             }
         }
                 

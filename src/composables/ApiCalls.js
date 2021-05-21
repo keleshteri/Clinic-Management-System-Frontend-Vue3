@@ -13,10 +13,10 @@ export default function (options) {
         if (!state.loaded) {
             try {
                 const response = await axios(options)
-                state.bigData = await response.data.data;
+                state.bigData = await response.data;
                 
             } catch (e) {
-                error.value = error.message
+                state.error = e.message
             }
         }
     }

@@ -79,6 +79,17 @@ export default{
                         },
                     ],
                 },
+                {
+                    label: 'Config',
+                    icon: 'cogs',
+                    items: [
+                        {
+                            label: 'Medicines',
+                            icon: 'pills',
+                            to: '/medicines',
+                        }
+                    ],
+                },
             ],
         }
     },
