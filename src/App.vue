@@ -1,15 +1,24 @@
 <template>
- <AdminLayout>
+  <component :is="layout">
     <router-view />
- </AdminLayout>
+  </component>  
 </template>
+
 <script>
-import AdminLayout from './layouts/AdminLayout.vue'
+import {  ref, computed } from "vue";
+import { useRouter } from "vue-router";
+const defaultLayout = "default";
 export default {
-  name:'App',
-  components:{AdminLayout}
+  setup() {
+    const { currentRoute } = useRouter();
+    const layout = computed(
+      () => `${currentRoute.value.meta.layout || defaultLayout}-layout`
+    );
+    console.log('layout',layout);
+    return {
+      layout,
+    };
+  },
 }
 </script>
-
- 
 

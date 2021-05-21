@@ -79,7 +79,6 @@ export default{
                         },
                     ],
                 },
-                 
             ],
         }
     },
@@ -204,5 +203,8 @@ export default{
 }
 </script>
 <style lang="scss">
+@import 'primevue/resources/themes/saga-blue/theme.css';
+@import 'primevue/resources/primevue.min.css';
+@import 'primeicons/primeicons.css';
 @import '../sass/App.scss';
 </style>

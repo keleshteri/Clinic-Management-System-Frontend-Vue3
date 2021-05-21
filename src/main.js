@@ -1,9 +1,6 @@
 /**Core */
 import { createApp,reactive } from 'vue'
-/**primevue css & scss */
-import 'primevue/resources/themes/saga-blue/theme.css';
-import 'primevue/resources/primevue.min.css';
-import 'primeicons/primeicons.css';
+
 //router & store
 import router from "./router";
 import store from "./store";
@@ -17,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(fas);
  
 //
-import DashboardLayout from './layouts/DashboardLayout.vue';
+import DashboardLayout from './layouts/AdminLayout.vue';
 import EmptyLayout from './layouts/EmptyLayout.vue';
 
 //
