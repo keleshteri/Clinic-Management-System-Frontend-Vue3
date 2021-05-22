@@ -23,7 +23,7 @@ export default {
         return {
             schema: {
                 rows: [
-                    ['quantity_id', 'name'], ['description']
+                    ['quantity', 'name'], ['description']
 
                 ],
                 fields:{
@@ -48,9 +48,9 @@ export default {
                                 Delete: true
                             }
                         },
-                    quantity_id: {
+                    quantity: {
                          label: 'quantity',
-                         field: 'quantity_id',
+                         field: 'quantity',
                          type: 'String',
                          fieldSize: 1,
                          fieldType: 'dropdown',
@@ -105,7 +105,7 @@ export default {
         async getOptions () { 
             try {
                 const response = await axios.get('/api/v1/quantities')
-                this.schema.fields.quantity_id.options = response.data
+                this.schema.fields.quantity.options = response.data
             }catch (e) {
                 console.log(e)
             }

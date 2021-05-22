@@ -1,45 +1,28 @@
 <template>
-    <div class="p-grid crud-demo">
-        <div class="p-col-12">
-            <div class="card">
-                <div v-if="error">
-                    {{ error }}
-                </div>
-                <AsyncPatientsTable
-                    v-else
-                    :fields ="schema.fields"
-                    title="Patients"
-                    :data="patients"
-                    @show:data="showData"
-                    @update:dataSelectedRows="updateSelectedData"
-                    @update:data="editTable"
-                    @delete:data="deleteTable"
-                     
-                >
-                <template v-slot:table-actions>
-                   <h1>table-actions</h1>
-                     <button
-                class="px-3 py-1 bg-indigo-600 text-white rounded-md text-sm hover:bg-indigo-500 focus:outline-none"
-              >
-                New
-              </button>
-                </template>
-                <template v-slot:table-actions-bottom>
-                  <h1>table-actions-bottom</h1>
-                </template>
-            
-                </AsyncPatientsTable>
-            </div>
-        </div>
+    <div class="p-mb-3 p-text-center">
+        <Button class="p-button-lg" :label="` Create New ${label} `" @click="createNew" icon="pi pi-plus" />
     </div>
+    <div v-if="error">
+        {{ error }}
+    </div>
+    <AsyncTable
+        v-else
+        :fields ="schema.fields"
+        :title="label"
+        :data="bigData"
+        @show:data="showData"
+        @update:dataSelectedRows="updateSelectedData"
+        @update:data="editTable"
+        @delete:data="deleteTable"
+            
+    />
 </template>
 <script>
-// import Table from '../../components/generator/table/Table.vue'
 import { defineAsyncComponent } from 'vue'
 import Loading from '../../components/Loading.vue'
-import usePatients from '../../composables/patient/getPatients'
+import axios from 'axios'
 
-const AsyncPatientsTable = defineAsyncComponent({
+const AsyncTable = defineAsyncComponent({
     loader: () => import('../../components/generator/table/Table.vue'),
     loadingComponent: Loading,
     // errorComponent: ErrorComponent,
@@ -49,54 +32,61 @@ const AsyncPatientsTable = defineAsyncComponent({
 })
 
 export default {
-    name:'PatientsList',
+    name: 'PatientsList',
     props:['schema'],
-    components:{AsyncPatientsTable},
-    data(){return{     
-    }},
-    methods:{
+    components: { AsyncTable },
+    error: null,
+    data() {
+        return {
+            error: null,
+            bigData: null,
+            label: 'Patient',
+            createNewPath: '/patients/new',
+            editName: 'PatientUpdate',
+            deleteData: '/api/v1/patient/'          
+        }
+    },
+    created() {
+        this.getList();
+    },
+    methods: {
+        async getList() {
+            try {
+                const response = await axios.get(`/api/v1/patient`)
+                this.bigData = response.data                
+            } catch (e) {
+                console.log(e)
+            }
+            
+        },
+        createNew() {
+            this.$router.push({ path: this.createNewPath })  
+        },
         updateSelectedData(rows) {
             console.log('rows: ', { ...rows })
         },
         showData (data) {
             this.$emit('show:data', data);
         },
-        editTable(patient) {
-            console.log('button edit click: ', { ...patient })
+        editTable(data) {
             this.$router.push({
-                name: 'PatientUpdate',
-                params: { id: patient.id },
+                name: this.editName,
+                params: { id: data.id },
             })
         },
-        deleteTable(data) {
-            alert('Patient Can not Be deleted')
-        },
-        idCardPatient(patient) {
-            console.log('button idCardPatient click: ', { ...patient })
-            this.$router.push({
-                name: 'PatientUploads',
-                params: { id: patient.id },
-            })
-        },
-
-    },
-     async setup() {
-        const { patients, error, load } = usePatients()
-
-        await load()
-        return { patients, error }
-        // const patients = ref(null)
-        // const error = ref(null)
-
-        // try {
-        //     const patientsResponse = await fetch('/api/v1/patient')
-        //     patients.value = await patientsResponse.json()
-        // } catch (e) {
-        //     error.value = e
-        // }
-
-        // return { patients, error }
-    },
+        async deleteTable(data) {
+            let dataDelete = {...data}
+            const response = await axios.delete(this.deleteData + dataDelete.id)
+            for( let i = 0; i < this.bigData.length; i++){ 
     
+                if ( this.bigData[i].id === dataDelete.id) { 
+            
+                    this.bigData.splice(i, 1); 
+                }
+            
+            }
+            alert(response.data.message)
+        },
+    }
 }
 </script>
