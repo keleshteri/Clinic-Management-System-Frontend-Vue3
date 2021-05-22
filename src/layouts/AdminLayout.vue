@@ -92,6 +92,16 @@ export default{
                             label: 'Medicine Companies',
                             icon: 'clinic-medical',
                             to: '/medicine-companies',
+                        },
+                        {
+                            label: 'Quantites',
+                            icon: 'stream',
+                            to: '/quantities',
+                        },
+                        {
+                            label: 'Units Measurements',
+                            icon: 'keyboard',
+                            to: '/units-measurements',
                         }
                     ],
                 },

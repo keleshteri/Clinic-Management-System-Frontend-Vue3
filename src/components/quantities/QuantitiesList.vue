@@ -32,7 +32,7 @@ const AsyncTable = defineAsyncComponent({
 })
 
 export default {
-    name: 'MedicineCompaniesList',
+    name: 'QuantitiesList',
     props:['schema'],
     components: { AsyncTable },
     error: null,
@@ -40,10 +40,10 @@ export default {
         return {
             error: null,
             bigData: null,
-            label: 'Medicine',
-            createNewPath: '/medicine-companies/new',
-            editName: 'MedicineCompaniesUpdate',
-            deleteData: '/api/v1/medicine/companies/'          
+            label: 'Quantities',
+            createNewPath: '/quantities/new',
+            editName: 'QuantitiesUpdate',
+            deleteData: '/api/v1/quantities/'          
         }
     },
     created() {
@@ -52,7 +52,7 @@ export default {
     methods: {
         async getList() {
             try {
-                const response = await axios.get(`/api/v1/medicine/companies`)
+                const response = await axios.get(`/api/v1/quantities`)
                 this.bigData = response.data                
             } catch (e) {
                 console.log(e)

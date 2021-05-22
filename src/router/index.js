@@ -15,6 +15,21 @@ import MedicineCompaniesList from '../components/medicine-companies/MedicineComp
 import MedicineCompaniesCreate from '../components/medicine-companies/MedicineCompaniesCreate.vue'
 import MedicineCompaniesEdit from '../components/medicine-companies/MedicineCompaniesEdit.vue'
 
+import MedicineTypes from '../views/MedicineTypes.vue'
+import MedicineTypesList from '../components/medicine-types/MedicineTypesList.vue'
+import MedicineTypesCreate from '../components/medicine-types/MedicineTypesCreate.vue'
+import MedicineTypesEdit from '../components/medicine-types/MedicineTypesEdit.vue'
+
+import Quantities from '../views/Quantities.vue'
+import QuantitiesList from '../components/quantities/QuantitiesList.vue'
+import QuantitiesCreate from '../components/quantities/QuantitiesCreate.vue'
+import QuantitiesEdit from '../components/quantities/QuantitiesEdit.vue'
+
+import UnitsMeasurements from '../views/UnitsMeasurements.vue'
+import UnitsMeasurementsList from '../components/units-measurements/UnitsMeasurementsList.vue'
+import UnitsMeasurementsCreate from '../components/units-measurements/UnitsMeasurementsCreate.vue'
+import UnitsMeasurementsEdit from '../components/units-measurements/UnitsMeasurementsEdit.vue'
+
 const routes = [
     {
         path: '/',
@@ -90,6 +105,75 @@ const routes = [
                 path: 'update/:id',
                 name: 'MedicineCompaniesUpdate',
                 component: MedicineCompaniesEdit,
+            },
+        ]
+
+    },
+    {
+        path: '/medicine-types',
+        name: 'MedicineTypes',
+        component:MedicineTypes,
+        children:[
+            {
+                path:'',
+                name: 'MedicineTypesList',
+                component:MedicineTypesList,
+            },
+            {
+                path: 'new',
+                name: 'MedicineTypesNew',
+                component: MedicineTypesCreate,
+            },
+            {
+                path: 'update/:id',
+                name: 'MedicineTypesUpdate',
+                component: MedicineTypesEdit,
+            },
+        ]
+
+    },
+    {
+        path: '/quantities',
+        name: 'Quantities',
+        component:Quantities,
+        children:[
+            {
+                path:'',
+                name: 'QuantitiesList',
+                component:QuantitiesList,
+            },
+            {
+                path: 'new',
+                name: 'QuantitiesNew',
+                component: QuantitiesCreate,
+            },
+            {
+                path: 'update/:id',
+                name: 'QuantitiesUpdate',
+                component: QuantitiesEdit,
+            },
+        ]
+
+    },
+    {
+        path: '/units-measurements',
+        name: 'UnitsMeasurements',
+        component:UnitsMeasurements,
+        children:[
+            {
+                path:'',
+                name: 'UnitsMeasurementsList',
+                component:UnitsMeasurementsList,
+            },
+            {
+                path: 'new',
+                name: 'UnitsMeasurementsNew',
+                component: UnitsMeasurementsCreate,
+            },
+            {
+                path: 'update/:id',
+                name: 'UnitsMeasurementsUpdate',
+                component: UnitsMeasurementsEdit,
             },
         ]
 
