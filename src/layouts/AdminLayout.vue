@@ -87,6 +87,11 @@ export default{
                             label: 'Medicines',
                             icon: 'pills',
                             to: '/medicines',
+                        },
+                        {
+                            label: 'Medicine Companies',
+                            icon: 'clinic-medical',
+                            to: '/medicine-companies',
                         }
                     ],
                 },

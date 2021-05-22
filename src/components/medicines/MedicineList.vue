@@ -43,7 +43,7 @@ export default {
             label: 'Medicine',
             createNewPath: '/medicines/new',
             editName: 'MedicineUpdate',
-            deleteData: '/api/v1/medicine/'          
+            deleteData: '/api/v1/medicines/'          
         }
     },
     created() {
@@ -52,7 +52,7 @@ export default {
     methods: {
         async getList() {
             try {
-                const response = await axios.get(`/api/v1/medicine`)
+                const response = await axios.get(`/api/v1/medicines`)
                 this.bigData = response.data                
             } catch (e) {
                 console.log(e)

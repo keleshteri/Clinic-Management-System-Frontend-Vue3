@@ -10,7 +10,7 @@
                     :fields="schema.fields"
                     :data="{}"
                      
-                    url="/api/v1/medicine"
+                    url="/api/v1/medicines"
                     :rows="schema.rows"
                 ></Form>
             </div>

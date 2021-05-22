@@ -15,7 +15,7 @@
                             <Form
                                 :fields="schema.fields"
                                 :data="bigData"
-                                :url="'/api/v1/medicine/' + bigData.id"
+                                :url="'/api/v1/medicines/' + bigData.id"
                                 :rows="schema.rows"                                
                                 :edit="true"
                             ></Form>
@@ -47,7 +47,7 @@ export default {
     methods: {
         async getData() {
             try {
-                const response = await axios.get('/api/v1/medicine/' + this.$route.params.id)
+                const response = await axios.get('/api/v1/medicines/' + this.$route.params.id)
                 this.bigData = response.data
             }catch (e) {
                 this.error = e.message
