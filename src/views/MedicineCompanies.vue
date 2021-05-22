@@ -22,7 +22,7 @@ export default {
         return {
             schema: {
                 rows: [
-                    ['code', 'name'],
+                    ['name'],
                     ['description']
 
                 ],
@@ -48,20 +48,6 @@ export default {
                                     Delete: true
                                 }
                         },
-                     code: {
-                         label: 'Code',
-                         field: 'code',
-                         type: 'String',
-                         fieldSize: 1,
-                         fieldType: 'text',
-                         editable: true,
-                         creatable: true,
-                         rules: { required },
-                         sortable: true,
-                         class: '',
-                         style: '',
-                         hidden: false,
-                     },
                      name: {
                          label: 'Name',
                          field: 'name',
@@ -90,6 +76,7 @@ export default {
                          style: '',
                          hidden: false,
                      },
+                     
                 }
             }
         }
