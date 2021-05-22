@@ -10,6 +10,10 @@ import MedicineList from '../components/medicines/MedicineList.vue'
 import MedicineCreate from '../components/medicines/MedicineCreate.vue'
 import MedicineEdit from '../components/medicines/MedicineEdit.vue'
 // import PatientUploads from '../components/patients/uploads/PatientUploads.vue'
+import MedicineCompanies from '../views/MedicineCompanies.vue'
+import MedicineCompaniesList from '../components/medicine-companies/MedicineCompaniesList.vue'
+import MedicineCompaniesCreate from '../components/medicine-companies/MedicineCompaniesCreate.vue'
+import MedicineCompaniesEdit from '../components/medicine-companies/MedicineCompaniesEdit.vue'
 
 const routes = [
     {
@@ -63,6 +67,29 @@ const routes = [
                 path: 'update/:id',
                 name: 'MedicineUpdate',
                 component: MedicineEdit,
+            },
+        ]
+
+    },
+    {
+        path: '/medicine-companies',
+        name: 'MedicineCompanies',
+        component:MedicineCompanies,
+        children:[
+            {
+                path:'',
+                name: 'MedicineCompaniesList',
+                component:MedicineCompaniesList,
+            },
+            {
+                path: 'new',
+                name: 'MedicineCompaniesNew',
+                component: MedicineCompaniesCreate,
+            },
+            {
+                path: 'update/:id',
+                name: 'MedicineCompaniesUpdate',
+                component: MedicineCompaniesEdit,
             },
         ]
 

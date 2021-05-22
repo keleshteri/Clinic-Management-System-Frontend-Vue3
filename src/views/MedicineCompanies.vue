@@ -17,7 +17,7 @@
 <script>
 import { required } from '@vuelidate/validators'
 export default {
-    name:'Medicines',
+    name:'MedicineCompanies',
     data() {
         return {
             schema: {
