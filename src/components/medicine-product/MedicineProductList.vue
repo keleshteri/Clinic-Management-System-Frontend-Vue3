@@ -53,7 +53,15 @@ export default {
         async getList() {
             try {
                 const response = await axios.get(`/api/v1/medicine/products`)
-                this.bigData = response.data                
+                let temData = response.data
+                for(const d of temData) {
+                    d.units = d.doseUnits.name
+                    d.type = d.medicineType.name
+                    d.company = d.medicineCompany.name
+                    d.medicine = d.medicine.name
+                    d.dose = `${d.dose} (${d.doseUnits.name}) `
+                }
+                this.bigData = temData               
             } catch (e) {
                 console.log(e)
             }

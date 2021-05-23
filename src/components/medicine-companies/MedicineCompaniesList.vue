@@ -40,7 +40,7 @@ export default {
         return {
             error: null,
             bigData: null,
-            label: 'Medicine',
+            label: 'Medicine Companies',
             createNewPath: '/medicine-companies/new',
             editName: 'MedicineCompaniesUpdate',
             deleteData: '/api/v1/medicine/companies/'          

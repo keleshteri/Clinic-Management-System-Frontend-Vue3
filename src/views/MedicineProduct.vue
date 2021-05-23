@@ -23,8 +23,8 @@ export default {
         return {
             schema: {
                 rows: [
-                    ['medicine', 'medicine_company', 'dose_units'],
-                    ['code', 'name']
+                    ['medicine', 'type', 'company', 'units'],
+                    ['code', 'dose', 'name']
 
                 ],
                 fields:{
@@ -49,8 +49,22 @@ export default {
                                 Delete: true
                             }
                         },
+                    name: {
+                         label: 'Product Name',
+                         field: 'name',
+                         type: 'String',
+                         fieldSize: 1,
+                         fieldType: 'text',
+                         editable: true,
+                         creatable: true,
+                         rules: { required },
+                         sortable: true,
+                         class: '',
+                         style: '',
+                         hidden: false,
+                    },
                     medicine: {
-                         label: 'Medicine',
+                         label: 'Drug Name',
                          field: 'medicine',
                          type: 'String',
                          fieldSize: 1,
@@ -66,9 +80,9 @@ export default {
                          style: '',
                          hidden: false,
                     },
-                    medicine_company: {
-                         label: 'Medicine Company',
-                         field: 'medicine_company',
+                    type: {
+                         label: 'Drug Type',
+                         field: 'type',
                          type: 'String',
                          fieldSize: 1,
                          fieldType: 'dropdown',
@@ -83,15 +97,46 @@ export default {
                          style: '',
                          hidden: false,
                     },
-                    dose_units: {
-                         label: 'Dose Units',
-                         field: 'dose_units',
+                    company: {
+                         label: 'Drug Company',
+                         field: 'company',
                          type: 'String',
                          fieldSize: 1,
                          fieldType: 'dropdown',
                          options: null,
                          optionsValue: 'id',
                          optionsLabel: 'name',
+                         editable: true,
+                         creatable: true,
+                         rules: { required },
+                         sortable: true,
+                         class: '',
+                         style: '',
+                         hidden: false,
+                    },
+                    units: {
+                         label: 'Dose Units',
+                         field: 'units',
+                         type: 'String',
+                         fieldSize: 1,
+                         fieldType: 'dropdown',
+                         options: null,
+                         optionsValue: 'id',
+                         optionsLabel: 'name',
+                         editable: true,
+                         creatable: true,
+                         rules: { required },
+                         sortable: true,
+                         class: '',
+                         style: '',
+                         hidden: false,
+                    },
+                    dose: {
+                         label: 'Dose',
+                         field: 'dose',
+                         type: 'String',
+                         fieldSize: 1,
+                         fieldType: 'text',
                          editable: true,
                          creatable: true,
                          rules: { required },
@@ -113,21 +158,8 @@ export default {
                          class: '',
                          style: '',
                          hidden: false,
-                    }, 
-                    name: {
-                         label: 'Name',
-                         field: 'name',
-                         type: 'String',
-                         fieldSize: 1,
-                         fieldType: 'text',
-                         editable: true,
-                         creatable: true,
-                         rules: { required },
-                         sortable: true,
-                         class: '',
-                         style: '',
-                         hidden: false,
                     },
+                    
                                    
                 }
             }
@@ -136,6 +168,7 @@ export default {
     },
     created () {
         this.getMedicinesOptions()
+        this.getTypesOptions () 
         this.getMedicineCompanyOptions()
         this.getUnitsMeasurementOptions()
     },
@@ -148,10 +181,18 @@ export default {
                 console.log(e)
             }
         },
+        async getTypesOptions () { 
+            try {
+                const response = await axios.get('/api/v1/medicine/types')
+                this.schema.fields.type.options = response.data
+            }catch (e) {
+                console.log(e)
+            }
+        },
         async getMedicineCompanyOptions () { 
             try {
                 const response = await axios.get('/api/v1/medicine/companies')
-                this.schema.fields.medicine_company.options = response.data
+                this.schema.fields.company.options = response.data
             }catch (e) {
                 console.log(e)
             }
@@ -159,7 +200,7 @@ export default {
         async getUnitsMeasurementOptions () { 
             try {
                 const response = await axios.get('/api/v1/units/measurements')
-                this.schema.fields.dose_units.options = response.data
+                this.schema.fields.units.options = response.data
             }catch (e) {
                 console.log(e)
             }

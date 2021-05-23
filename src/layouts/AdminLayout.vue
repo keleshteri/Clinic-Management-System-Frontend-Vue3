@@ -84,17 +84,22 @@ export default{
                     icon: 'cogs',
                     items: [
                         {
-                            label: 'Medicine Products',
+                            label: 'Drug Products',
                             icon: 'prescription-bottle-alt',
                             to: '/medicine-products',
                         },
                         {
-                            label: 'Medicines',
+                            label: 'Drug',
                             icon: 'pills',
                             to: '/medicines',
                         },
                         {
-                            label: 'Medicine Companies',
+                            label: 'Drug Types',
+                            icon: 'th-list',
+                            to: '/medicine-types',
+                        },
+                        {
+                            label: 'Drug Companies',
                             icon: 'clinic-medical',
                             to: '/medicine-companies',
                         },

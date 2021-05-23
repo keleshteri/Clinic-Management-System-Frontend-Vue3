@@ -48,8 +48,16 @@ export default {
         async getData() {
             try {
                 const response = await axios.get('/api/v1/medicine/products/' + this.$route.params.id)
-                this.bigData = response.data
+                let temData = response.data
+
+                temData.units = temData.doseUnits.id
+                temData.type = temData.medicineType.id
+                temData.company = temData.medicineCompany.id
+                temData.medicine = temData.medicine.id
+                
+                this.bigData = temData
             }catch (e) {
+                console.log(e)
                 this.error = e.message
             }
             
