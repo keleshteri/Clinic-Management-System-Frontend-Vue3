@@ -30,6 +30,11 @@ import UnitsMeasurementsList from '../components/units-measurements/UnitsMeasure
 import UnitsMeasurementsCreate from '../components/units-measurements/UnitsMeasurementsCreate.vue'
 import UnitsMeasurementsEdit from '../components/units-measurements/UnitsMeasurementsEdit.vue'
 
+import MedicineProduct from '../views/MedicineProduct.vue'
+import MedicineProductList from '../components/medicine-product/MedicineProductList.vue'
+import MedicineProductCreate from '../components/medicine-product/MedicineProductCreate.vue'
+import MedicineProductEdit from '../components/medicine-product/MedicineProductEdit.vue'
+
 const routes = [
     {
         path: '/',
@@ -174,6 +179,29 @@ const routes = [
                 path: 'update/:id',
                 name: 'UnitsMeasurementsUpdate',
                 component: UnitsMeasurementsEdit,
+            },
+        ]
+
+    },
+    {
+        path: '/medicine-products',
+        name: 'MedicineProduct',
+        component:MedicineProduct,
+        children:[
+            {
+                path:'',
+                name: 'MedicineProductList',
+                component:MedicineProductList,
+            },
+            {
+                path: 'new',
+                name: 'MedicineProductNew',
+                component: MedicineProductCreate,
+            },
+            {
+                path: 'update/:id',
+                name: 'MedicineProductUpdate',
+                component: MedicineProductEdit,
             },
         ]
 

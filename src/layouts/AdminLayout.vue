@@ -84,6 +84,11 @@ export default{
                     icon: 'cogs',
                     items: [
                         {
+                            label: 'Medicine Products',
+                            icon: 'prescription-bottle-alt',
+                            to: '/medicine-products',
+                        },
+                        {
                             label: 'Medicines',
                             icon: 'pills',
                             to: '/medicines',
@@ -102,7 +107,8 @@ export default{
                             label: 'Units Measurements',
                             icon: 'keyboard',
                             to: '/units-measurements',
-                        }
+                        },
+                        
                     ],
                 },
             ],
